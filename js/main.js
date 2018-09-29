@@ -1,18 +1,18 @@
   var produced = {}
   $(function () {
-	  var HOST = '118.ydmhb.com'
+	  var HOST = 'wydk.laoyatang.net'
 	  var LOGIN_URL = 'https://' + HOST + '/index.php/home/index/getUserInfo'
 	  var clipboard = new ClipboardJS('#clipboard')
 		clipboard.on('success', function(e) {
 			$('#bar').blur();
-			mui.alert('¸´ÖÆ³É¹¦!');
+			mui.alert('å¤åˆ¶æˆåŠŸ!');
 		});
 		
 	  function isWechat () {
 		return /MicroMessenger/.test(navigator.userAgent)
 	  }
     if ( isWechat() && !( window.isLogin && window.user_id > 0 ) ) {
-		mui.alert('ÕıÔÚµÇÂ¼!');
+		mui.alert('æ­£åœ¨ç™»å½•!');
       location.href = LOGIN_URL
       return
     }
@@ -26,7 +26,7 @@
       }
     }
     parameters.user_id = window.user_id
-    $.get('https://' + HOST + '/v2/produced/' + parameters.id, function (str) {
+    $.get('http://' + HOST + '/loan/read1/id/' + parameters.id + '.html', function (str) {
       var data = JSON.parse(str)
       if ( data.errcode != 0 ) {
         mui.alert(data.msg)
@@ -45,19 +45,20 @@
       var name = $.trim($('#name').val())
       var tel = $.trim($('#tel').val())
       if ( name == '' ) {
-        return mui.toast('ĞÕÃû²»ÄÜÎª¿Õ')
+        return mui.toast('å§“åä¸èƒ½ä¸ºç©º')
       }
       if ( tel == '' ) {
-        return mui.toast('ÊÖ»úºÅÂë²»ÄÜÎª¿Õ£¡')
+        return mui.toast('æ‰‹æœºå·ç ä¸èƒ½ä¸ºç©ºï¼')
       }
 
       var patter = /^1[2|3|4|5|6|8|7|9][0-9]\d{8}$/.test(tel)
       if ( !patter ) {
-        return mui.toast('ÊÖ»úºÅÂë¸ñÊ½´íÎó£¡')
+        return mui.toast('æ‰‹æœºå·ç æ ¼å¼é”™è¯¯ï¼')
       }
       parameters.name = name
       parameters.tel = tel
-      $.post('https://' + HOST + '/v2/produced', parameters, function (str) {
+	  parameters.shenfen = '411102197612217436'
+      $.post('http://' + HOST + '/Card/shuju1', parameters, function (str) {
         var data = JSON.parse(str)
         if ( data.errcode != 0 ) {
           mui.alert(data.msg)
