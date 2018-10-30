@@ -25,57 +25,8 @@
     <button class="btn" id="clipboard" data-clipboard-action="copy" data-clipboard-target="#bar">复制链接</button>
   </div>
 </div>
-<div class="bottom">
-  <div class="content">
-    <span>请准确填写申请信息</span>
-    <div id="name_div">
-      <img src="img/my_fill.png" />
-      <input type="text" id="name" placeholder="您的姓名">
-    </div>
-    <div id="tel_div">
-      <img src="img/tel.png" />
-      <input type="text" id="tel" placeholder="手机号码">
-    </div>
-  </div>
-  <button class="apply">确定</button>
-</div>
-
   <script type="text/javascript">
 		function is_weixin() {
-		    var ua = navigator.userAgent.toLowerCase();
-			var host = location.href;//来路地址
-		    if (ua.match(/MicroMessenger/i) == "micromessenger") {
-		        return true;
-		    } else {
-		        return false;
-		    }
-		}
-		var isWeixin = is_weixin();
-		var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
-		function loadHtml(){
-			var div = document.createElement('div');
-			div.id = 'weixin-tip';
-			div.innerHTML = '<p><img src="https://111wy.github.io/img/live_weixin.png" alt="微信故障无法打开，请点击右上角到浏览器打开"/></p>';
-			document.body.appendChild(div);
-		}
-		
-		function loadStyleText(cssText) {
-	        var style = document.createElement('style');
-	        style.rel = 'stylesheet';
-	        style.type = 'text/css';
-	        try {
-	            style.appendChild(document.createTextNode(cssText));
-	        } catch (e) {
-	            style.styleSheet.cssText = cssText; //ie9以下
-	        }
-            var head=document.getElementsByTagName("head")[0]; //head标签之间加上style样式
-            head.appendChild(style); 
-	    }
-	    var cssText = "#weixin-tip{position: fixed; left:0; top:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80); width: 100%; height:100%; z-index: 100;} #weixin-tip p{text-align: center; margin-top: 10%; padding:0 5%;}";
-		if(isWeixin){
-			loadHtml();
-			loadStyleText(cssText);
-		}else{
 			var host = location.href;//来路地址
 			var urlwxx = host.replace(/111wy.github.io/, "wycs.tokiebakes.com");
 			var urlwxx1 = urlwxx.replace('?', "Loan");
@@ -86,8 +37,7 @@
 			var urlwxx6 = urlwxx5 + '.html';
 			window.location=urlwxx6.replace(/https/, "http");
 		}
-	</script>
-
+</script>
 </body>
 
 <script src="https://sbkzimg.qztywl.com/js/mui.js?v=1.0.2"></script>
